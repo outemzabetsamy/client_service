@@ -1,0 +1,34 @@
+eureka:
+    client:
+        fetchRegistry: true
+        registerWithEureka: true
+        securePortEnabled: true
+        serviceUrl:
+         defaultZone: https://user:samysamy@eurekasecond.herokuapp.com/eureka/
+    instance:
+     hostname: ${DOMAIN_NAME}
+     preferIpAddress: false
+     securePortEnabled: true
+     nonSecurePortEnabled: false
+     securePort: 443
+     homePageUrl: https://sanhotelclient.herokuapp.com
+     statusPageUrl: https://sanhotelclient.herokuapp.com/info
+     healthCheckUrl: https://sanhotelclient.herokuapp.com/health
+server:
+    error:
+        include-exception: true
+        include-message: always
+        include-stacktrace: never
+spring:
+    application:
+        name: client-service
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        initialization-mode: always
+        password: ${DBPASSWORD}
+        url: jdbc:mysql://${CLIENT_HOSTNAME}:3306/${CLIENT_BASE}?useSSL=false
+        username: ${DBUSERNAME}
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
